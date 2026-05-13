@@ -799,12 +799,17 @@ const Contact = ({ onElementHover }) => {
               href="mailto:andymaria55@gmail.com" onElementHover={onElementHover}/>
           </li>
           <li>
-            <ContactRow type="phone" label="Armenia" value="+374 98 550148"
-              href="tel:+37498550148" onElementHover={onElementHover}/>
-          </li>
-          <li>
-            <ContactRow type="phone" label="Lebanon" value="+961 71 550140"
-              href="tel:+96171550140" onElementHover={onElementHover}/>
+            <div className="contact-row contact-row-static contact-row-phone">
+              <span className="crow-icon">{CROW_ICONS.phone}</span>
+              <span className="crow-text">
+                <span className="crow-label">Phone</span>
+                <span className="crow-value">
+                  <a href="tel:+37498550148">+374 98 550148</a>
+                  {' · '}
+                  <a href="tel:+96171550140">+961 71 550140</a>
+                </span>
+              </span>
+            </div>
           </li>
           <li>
             <ContactRow type="github" label="GitHub" value="@andyyounes"
