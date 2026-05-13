@@ -769,7 +769,7 @@ const ContactRow = ({ type, label, value, href, onClick, isStatic, onElementHove
   if (isStatic) return <div {...rowProps}>{inner}</div>;
 
   if (onClick) return (
-    <button {...rowProps} onClick={(e) => { fireRipple(e); onClick(e); }} onTouchStart={fireRipple}>
+    <button {...rowProps} onClick={(e) => { fireRipple(e); onClick(e); }}>
       {inner}
     </button>
   );
@@ -778,7 +778,7 @@ const ContactRow = ({ type, label, value, href, onClick, isStatic, onElementHove
     <a {...rowProps} href={href}
        target={href && href.startsWith('http') ? '_blank' : undefined}
        rel={href && href.startsWith('http') ? 'noreferrer' : undefined}
-       onClick={fireRipple} onTouchStart={fireRipple}>
+       onClick={fireRipple}>
       {inner}
     </a>
   );
