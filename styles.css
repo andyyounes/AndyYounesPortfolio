@@ -1250,34 +1250,44 @@ main { position: relative; z-index: 2; }
   button.contact-row:hover::after { opacity: 0.43; }
 }
 
-/* ── Active/press: chrome flares, surface compresses ── */
-a.contact-row:active,
-button.contact-row:active {
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.90)  0%,
-    #3a3f48                  8%,
-    #22252a                 25%,
-    #181a1f                 50%,
-    #0c0d10                 80%,
-    #060607                100%
-  );
-  transform: scale(0.997) translateY(1px);
-  box-shadow:
-    0 0 0 1.5px rgba(255,255,255,0.12),
-    0 0 0 3px   rgba(0,0,0,0.70),
-    0 2px 8px   rgba(0,0,0,0.70),
-    inset 0  3px 10px rgba(0,0,0,0.90),
-    inset 0 -1px  3px rgba(0,0,0,0.60),
-    inset 0  0    0   1px rgba(0,0,0,0.60);
-  transition-duration: 0.08s;
+/* ── Active/press: desktop gets full chrome flare ── */
+@media (hover: hover) {
+  a.contact-row:active,
+  button.contact-row:active {
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,0.90)  0%,
+      #3a3f48                  8%,
+      #22252a                 25%,
+      #181a1f                 50%,
+      #0c0d10                 80%,
+      #060607                100%
+    );
+    transform: scale(0.997) translateY(1px);
+    box-shadow:
+      0 0 0 1.5px rgba(255,255,255,0.12),
+      0 0 0 3px   rgba(0,0,0,0.70),
+      0 2px 8px   rgba(0,0,0,0.70),
+      inset 0  3px 10px rgba(0,0,0,0.90),
+      inset 0 -1px  3px rgba(0,0,0,0.60),
+      inset 0  0    0   1px rgba(0,0,0,0.60);
+    transition-duration: 0.08s;
+  }
+  a.contact-row:active::after,
+  button.contact-row:active::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) scaleX(1.8) scaleY(0.3);
+    transition-duration: 0.08s;
+  }
 }
-/* Full bloom flare — ellipse squashes as surface "compresses" */
-a.contact-row:active::after,
-button.contact-row:active::after {
-  opacity: 1;
-  transform: translate(-50%, -50%) scaleX(1.8) scaleY(0.3);
-  transition-duration: 0.08s;
+
+/* ── Active/press: touch gets lightweight opacity dip only ── */
+@media (hover: none) {
+  a.contact-row:active,
+  button.contact-row:active {
+    opacity: 0.65;
+    transition-duration: 0.05s;
+  }
 }
 
 /* Location row — always off, no hover */
@@ -1549,7 +1559,7 @@ button.contact-row:hover .crow-arrow {
    ============================================================ */
 .shell {
   transform-origin: center 25%;
-  will-change: transform, opacity;
+  will-change: transform;
   position: relative;
   isolation: isolate;
 }
