@@ -281,7 +281,6 @@ main { position: relative; z-index: 2; }
   position: relative;
   z-index: 2;
   min-width: 0;
-  overflow: hidden;
 }
 
 .hero-eyebrow {
