@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#111318"/>
+      <stop offset="100%" stop-color="#07080c"/>
+    </linearGradient>
+    <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#eaecf0"/>
+      <stop offset="18%"  stop-color="#c8ccd4"/>
+      <stop offset="45%"  stop-color="#8d949d"/>
+      <stop offset="70%"  stop-color="#5c6269"/>
+      <stop offset="100%" stop-color="#363a40"/>
+    </linearGradient>
+    <!-- subtle inner highlight at top edge -->
+    <linearGradient id="rim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- dark background -->
+  <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+
+  <!-- top-edge rim light (matches nav indicator inset highlight) -->
+  <rect width="32" height="10" rx="7" fill="url(#rim)"/>
+
+  <!-- outer border -->
+  <rect x="0.5" y="0.5" width="31" height="31" rx="6.5"
+        fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+
+  <!-- A monogram in chrome gradient -->
+  <text x="16" y="24"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="23"
+    font-weight="normal"
+    fill="url(#chrome)">A</text>
+</svg>
