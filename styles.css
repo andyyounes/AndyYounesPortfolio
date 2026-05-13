@@ -1228,35 +1228,36 @@ main { position: relative; z-index: 2; }
   z-index: 1;
 }
 
-/* ── Hover: surface wakes up, chrome materialises ── */
-a.contact-row:hover,
-button.contact-row:hover {
-  background: linear-gradient(
-    180deg,
-    rgba(255,255,255,0.85)  0%,
-    #474c55                  8%,
-    #2e3138                 25%,
-    #1e2128                 50%,
-    #10121a                 80%,
-    #090a0d                100%
-  );
-  border-color: transparent;
-  transform: translateY(-2px) scale(1.005);
-  box-shadow:
-    0 0 0 1.5px rgba(255,255,255,0.22),
-    0 0 0 3px   rgba(0,0,0,0.70),
-    0 10px 32px rgba(0,0,0,0.80),
-    inset 0  1px 1px rgba(255,255,255,0.25),
-    inset 0 -2px 4px rgba(0,0,0,0.80),
-    inset 0  0   0   1px rgba(0,0,0,0.50);
+/* ── Hover: surface wakes up, chrome materialises (pointer devices only) ── */
+@media (hover: hover) {
+  a.contact-row:hover,
+  button.contact-row:hover {
+    background: linear-gradient(
+      180deg,
+      rgba(255,255,255,0.85)  0%,
+      #474c55                  8%,
+      #2e3138                 25%,
+      #1e2128                 50%,
+      #10121a                 80%,
+      #090a0d                100%
+    );
+    border-color: transparent;
+    transform: translateY(-2px) scale(1.005);
+    box-shadow:
+      0 0 0 1.5px rgba(255,255,255,0.22),
+      0 0 0 3px   rgba(0,0,0,0.70),
+      0 10px 32px rgba(0,0,0,0.80),
+      inset 0  1px 1px rgba(255,255,255,0.25),
+      inset 0 -2px 4px rgba(0,0,0,0.80),
+      inset 0  0   0   1px rgba(0,0,0,0.50);
+  }
+  a.contact-row:hover::before,
+  button.contact-row:hover::before {
+    animation: crow-sweep 0.55s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+  a.contact-row:hover::after,
+  button.contact-row:hover::after { opacity: 0.43; }
 }
-a.contact-row:hover::before,
-button.contact-row:hover::before {
-  animation: crow-sweep 0.55s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-}
-/* Bloom at hover intensity — soft convex pool of light */
-a.contact-row:hover::after,
-button.contact-row:hover::after { opacity: 0.43; }
 
 /* ── Active/press: chrome flares, surface compresses ── */
 a.contact-row:active,
