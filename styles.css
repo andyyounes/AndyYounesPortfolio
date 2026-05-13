@@ -307,7 +307,7 @@ main { position: relative; z-index: 2; }
 }
 .hero-title em { font-style: italic; }
 .hero-title .iri-line {
-  display: inline-block;
+  display: inline;
   background: linear-gradient(
     110deg,
     var(--iri-violet) 0%,
