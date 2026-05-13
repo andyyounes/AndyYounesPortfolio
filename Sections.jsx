@@ -325,7 +325,7 @@ const BusinessCard = ({ onElementHover }) => {
                   </li>
                   <li>
                     <span className="bclbl">linkedin</span>
-                    <span>/in/andyyounes</span>
+                    <span>/in/andy-younes-b84505222</span>
                   </li>
                   <li>
                     <span className="bclbl">utc</span>
@@ -835,8 +835,8 @@ const Contact = ({ onElementHover }) => {
               href="https://github.com/andyyounes" onElementHover={onElementHover}/>
           </li>
           <li>
-            <ContactRow type="linkedin" label="LinkedIn" value="/in/andyyounes"
-              href="https://linkedin.com/in/andyyounes" onElementHover={onElementHover}/>
+            <ContactRow type="linkedin" label="LinkedIn" value="/in/andy-younes-b84505222"
+              href="https://www.linkedin.com/in/andy-younes-b84505222/" onElementHover={onElementHover}/>
           </li>
           <li>
             <ContactRow type="location" label="Location" value="Yerevan, Armenia · UTC +4"
