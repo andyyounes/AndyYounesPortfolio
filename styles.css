@@ -1822,6 +1822,8 @@ button.contact-row:hover .crow-arrow {
   overflow: hidden;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  /* iOS Safari: overflow:hidden breaks backface-visibility — mask forces GPU layer */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
 /* ── Front face ── */
