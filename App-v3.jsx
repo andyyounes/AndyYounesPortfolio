@@ -66,10 +66,11 @@ function useGlobalLight() {
 
 function useSectionDepth() {
   React.useEffect(() => {
+    if (window.matchMedia('(hover: none)').matches) return;
     let raf;
     let scrolled = false;
     const revealTimes = new Map();
-    const isTouch = window.matchMedia('(hover: none)').matches;
+    const isTouch = false;
 
     const onScroll = () => { scrolled = true; };
     window.addEventListener('scroll', onScroll, { passive: true });

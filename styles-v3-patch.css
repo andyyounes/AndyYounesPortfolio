@@ -47,6 +47,12 @@
   transition: height 0.06s linear;
 }
 
+/* Mobile reveal — drop opacity animation, transform only (no compositing layer) */
+@media (hover: none) {
+  .reveal         { opacity: 1; transition: transform 0.9s var(--ease, cubic-bezier(.22,.61,.36,1)); }
+  .reveal.in      { transform: none; }
+}
+
 /* Phone row — single row, two inline call links */
 .contact-row-phone {
   opacity: 1 !important;
