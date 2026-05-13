@@ -785,20 +785,6 @@ const ContactRow = ({ type, label, value, href, onClick, isStatic, onElementHove
 };
 
 const Contact = ({ onElementHover }) => {
-  const [phoneCopied, setPhoneCopied] = React.useState(false);
-  const [phoneMenuOpen, setPhoneMenuOpen] = React.useState(false);
-
-  const copyPhone = () => {
-    navigator.clipboard?.writeText('+37498550148');
-    setPhoneCopied(true);
-    setTimeout(() => setPhoneCopied(false), 1800);
-  };
-
-  const phoneNumbers = [
-    { label: 'Armenia', num: '+374 98 550148', href: 'tel:+37498550148' },
-    { label: 'Lebanon', num: '+961 71 550140', href: 'tel:+96171550140' },
-  ];
-
   return (
     <section className="shell reveal" id="contact" data-screen-label="04 Contact">
       <div className="section-head">
@@ -813,26 +799,12 @@ const Contact = ({ onElementHover }) => {
               href="mailto:andymaria55@gmail.com" onElementHover={onElementHover}/>
           </li>
           <li>
-            {IS_TOUCH
-              ? <>
-                  <ContactRow type="phone" label="Phone" value="+374 98 550148 | +961 71 550140"
-                    onClick={() => setPhoneMenuOpen(o => !o)} onElementHover={onElementHover}/>
-                  {phoneMenuOpen && (
-                    <div className="phone-menu">
-                      {phoneNumbers.map(n => (
-                        <a key={n.label} href={n.href} className="phone-option"
-                           onClick={() => setPhoneMenuOpen(false)}>
-                          <span className="phone-opt-label">{n.label}</span>
-                          <span className="phone-opt-num">{n.num}</span>
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </>
-              : <ContactRow type="phone" label="Phone"
-                  value={phoneCopied ? 'Copied ✓' : '+374 98 550148 | +961 71 550140'}
-                  onClick={copyPhone} onElementHover={onElementHover}/>
-            }
+            <ContactRow type="phone" label="Armenia" value="+374 98 550148"
+              href="tel:+37498550148" onElementHover={onElementHover}/>
+          </li>
+          <li>
+            <ContactRow type="phone" label="Lebanon" value="+961 71 550140"
+              href="tel:+96171550140" onElementHover={onElementHover}/>
           </li>
           <li>
             <ContactRow type="github" label="GitHub" value="@andyyounes"
