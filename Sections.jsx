@@ -313,19 +313,23 @@ const BusinessCard = ({ onElementHover }) => {
                 <ul className="bcard-contacts">
                   <li>
                     <span className="bclbl">email</span>
-                    <span>andymaria55@gmail.com</span>
+                    <a href="mailto:andymaria55@gmail.com" onClick={e => e.stopPropagation()}>andymaria55@gmail.com</a>
                   </li>
                   <li>
                     <span className="bclbl">phone</span>
-                    <span>+374 98 550148 · +961 71 550140</span>
+                    <span>
+                      <a href="tel:+37498550148" onClick={e => e.stopPropagation()}>+374 98 550148</a>
+                      {' · '}
+                      <a href="tel:+96171550140" onClick={e => e.stopPropagation()}>+961 71 550140</a>
+                    </span>
                   </li>
                   <li>
                     <span className="bclbl">github</span>
-                    <span>@andyyounes</span>
+                    <a href="https://github.com/andyyounes" target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>@andyyounes</a>
                   </li>
                   <li>
                     <span className="bclbl">linkedin</span>
-                    <span>/in/andy-younes-b84505222</span>
+                    <a href="https://www.linkedin.com/in/andy-younes-b84505222/" target="_blank" rel="noreferrer" onClick={e => e.stopPropagation()}>/in/andy-younes-b84505222</a>
                   </li>
                   <li>
                     <span className="bclbl">utc</span>
