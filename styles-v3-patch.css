@@ -1,0 +1,68 @@
+/* ── v3 patch — loaded after styles.css ── */
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Loading state — visible while #root is empty (before React mounts) */
+#root:empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #07080c;
+}
+#root:empty::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(200,210,230,0.10);
+  border-top-color: rgba(200,210,230,0.50);
+  animation: v3spin 0.75s linear infinite;
+}
+@keyframes v3spin { to { transform: rotate(360deg); } }
+
+/* Scroll progress line — left edge of viewport */
+.scroll-line {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(221,225,232,0.85) 0%,
+    rgba(195,199,207,0.75) 20%,
+    rgba(141,148,157,0.65) 45%,
+    rgba(102,108,116,0.55) 70%,
+    rgba(54,58,64,0.40) 100%
+  );
+  z-index: 9998;
+  pointer-events: none;
+  transition: height 0.06s linear;
+}
+
+/* Tweaks hint — fades out on its own */
+.tweaks-hint {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  font-family: var(--mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(155,163,175,0.30);
+  pointer-events: none;
+  z-index: 1000;
+  animation: hintFade 5s ease forwards;
+}
+@keyframes hintFade {
+  0%   { opacity: 1; }
+  60%  { opacity: 1; }
+  100% { opacity: 0; }
+}
