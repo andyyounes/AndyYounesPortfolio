@@ -320,7 +320,7 @@ const BusinessCard = ({ onElementHover }) => {
                     <span>
                       <a href="tel:+37498550148" onClick={e => e.stopPropagation()}>+374 98 550148</a>
                       {' · '}
-                      <a href="tel:+96171550140" onClick={e => e.stopPropagation()}>+961 71 550140</a>
+                      <a href="tel:+96179094368" onClick={e => e.stopPropagation()}>+961 79  094 368</a>
                     </span>
                   </li>
                   <li>
@@ -806,7 +806,7 @@ const Contact = ({ onElementHover }) => {
                 <span className="crow-value">
                   <a href="tel:+37498550148">+374 98 550148</a>
                   {' · '}
-                  <a href="tel:+96171550140">+961 71 550140</a>
+                  <a href="tel:+96179094368">+961 79  094 368</a>
                 </span>
               </span>
             </div>
