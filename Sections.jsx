@@ -35,6 +35,24 @@ const PROJECTS = [
     desc:'Hybrid YOLO + MediaPipe + XGBoost pipeline for real-time gesture recognition. 98% accuracy on defect detection with sub-50ms inference on edge devices. Solved stand-alone classifier failures under lighting variation, background change, and fast hand motion.',
     tags:['YOLO','MediaPipe','XGBoost','Edge AI'], cover:'orbits', video: 'video_gestures.mp4', link: null,
     layout: { left:'58%', top:'106%', width:'42%', height:'26%' } },
+  { id:'p9', n:'09', title:'ByteForge', context:'ICT Learning Platform · Grade 6 → A Level', year:'2026–', role:'Creator & Developer',
+    desc:'An interactive ICT & Computer Science platform I built for school students, from Grade 6 through A Level. Each grade is a story-driven curriculum with real code editors — Blockly, Python in the browser, live HTML/CSS/JS — plus XP and new worlds to unlock. Teachers get their own accounts to run classes, see where students get stuck, and read each student’s real submitted work. Bilingual (English / Русский), with Windows and Mac desktop apps.',
+    tags:['Next.js','React','TypeScript','Supabase','Pyodide','Blockly','Electron'], cover:'grid',
+    video: 'video_byteforge.webm', poster: 'byteforge-poster.png', sound: true,
+    link: 'https://byteforge05.vercel.app/login',
+    downloads: [
+      { label: 'Download for Windows', href: 'https://github.com/andyyounes/ByteForge/releases/download/v1.0.0-desktop/ByteForge.Setup.1.0.0.exe' },
+      { label: 'Download for Mac',     href: 'https://github.com/andyyounes/ByteForge/releases/download/v1.0.0-desktop/ByteForge-1.0.0-universal.dmg' },
+    ],
+    shots: [
+      { src: 'byteforge-landing.png', label: 'Landing page' },
+      { src: 'byteforge-grade6.png',  label: 'Grade 6 · The Creator Quest' },
+      { src: 'byteforge-grade7.png',  label: 'Grade 7 · The Game Maker' },
+      { src: 'byteforge-grade8.png',  label: 'Grade 8 · The App Builder' },
+      { src: 'byteforge-grade9.png',  label: 'Grade 9 · Pseudocode trace table' },
+      { src: 'byteforge-alevel.png',  label: 'AS / A Level journey' },
+    ],
+    layout: { left:'38%', top:'138%', width:'62%', height:'25%' } },
 ];
 
 /* ── Cover Art SVGs ── */
@@ -485,7 +503,7 @@ const ProjectCard = ({ p, onOpen, onHover }) => {
         {!p.video && <CoverArt kind={p.cover}/>}
         {p.video && (
           <video ref={videoRef} className="project-video"
-            src={p.video} muted loop playsInline preload="metadata"/>
+            src={p.video} poster={p.poster} muted loop playsInline preload="metadata"/>
         )}
       </div>
       <div className="project-meta">
@@ -551,9 +569,16 @@ const ProjectExpand = ({ project, onClose }) => {
             <span>{p.context}</span>
           </div>
           {p.video ? (
-            <video className="pe-cover-video"
-              src={p.video} autoPlay muted loop playsInline
-              style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover', opacity:0.7 }}/>
+            p.sound ? (
+              /* Has a soundtrack: play with sound (opening the overlay was a click) and show controls */
+              <video className="pe-cover-video" key={p.video}
+                src={p.video} poster={p.poster} autoPlay controls playsInline
+                style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'contain', background:'#05060f', zIndex:3 }}/>
+            ) : (
+              <video className="pe-cover-video"
+                src={p.video} poster={p.poster} autoPlay muted loop playsInline
+                style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover', opacity:0.7 }}/>
+            )
           ) : (
             <div className="pe-cover-play" aria-hidden="true">
               <svg viewBox="0 0 60 60" width="48" height="48">
@@ -584,12 +609,30 @@ const ProjectExpand = ({ project, onClose }) => {
             <h5>Stack</h5>
             <div className="pe-tags">{p.tags.map(t => <span key={t}>{t}</span>)}</div>
           </div>
+          {p.shots && (
+            <div className="pe-tags-wrap">
+              <h5>Screenshots</h5>
+              <div className="pe-shots">
+                {p.shots.map(s => (
+                  <a key={s.src} href={s.src} target="_blank" rel="noreferrer" title={s.label}>
+                    <img src={s.src} alt={s.label} loading="lazy"/>
+                    <span>{s.label}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
           <div className="pe-actions">
             {p.link && (
               <a className="btn btn-primary" href={p.link} target="_blank" rel="noreferrer">
                 Live demo <span className="arrow">↗</span>
               </a>
             )}
+            {p.downloads && p.downloads.map(d => (
+              <a key={d.label} className="btn btn-ghost" href={d.href} target="_blank" rel="noreferrer">
+                {d.label} <span className="arrow">↓</span>
+              </a>
+            ))}
             <a className={`btn ${p.link ? 'btn-ghost' : 'btn-primary'}`} href="#contact" onClick={onClose}>
               Discuss this <span className="arrow">→</span>
             </a>
@@ -622,7 +665,7 @@ const Showcase = ({ onOpen }) => {
 
   return (
     <div className="showcase" onClick={() => onOpen(p)}>
-      <video ref={videoRef} key={p.video} src={p.video}
+      <video ref={videoRef} key={p.video} src={p.video} poster={p.poster}
         autoPlay muted loop playsInline className="showcase-video"/>
       <div className="showcase-overlay">
         <div className="showcase-bottom">
@@ -678,7 +721,7 @@ const Work = ({ onElementHover }) => {
     <section className="shell reveal" id="work" data-screen-label="03 Work">
       <div className="section-head">
         <span>/ 02 — Selected Work</span>
-        <span className="label-bright">08 entries</span>
+        <span className="label-bright">09 entries</span>
       </div>
       <h2 className="section-title">Selected<br/><em>artifacts</em><span className="iri">.</span></h2>
       <Showcase onOpen={setOpen}/>

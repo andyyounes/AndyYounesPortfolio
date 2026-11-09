@@ -100,3 +100,39 @@
   60%  { opacity: 1; }
   100% { opacity: 0; }
 }
+
+/* ByteForge — screenshot strip inside the project expand overlay */
+.pe-shots {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.pe-shots a {
+  flex: 0 0 auto;
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--fg-dim);
+  font-family: var(--mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pe-shots img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--line-2, rgba(255,255,255,0.14));
+  border-radius: 2px;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+@media (hover: hover) {
+  .pe-shots a:hover img { border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
+}
+@media (max-width: 480px) { .pe-shots a { width: 150px; } }
