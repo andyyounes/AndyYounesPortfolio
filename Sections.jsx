@@ -38,7 +38,7 @@ const PROJECTS = [
   { id:'p9', n:'09', title:'ByteForge', context:'ICT Learning Platform · Grade 6 → A Level', year:'2026–', role:'Creator & Developer',
     desc:'An interactive ICT & Computer Science platform I built for school students, from Grade 6 through A Level. Each grade is a story-driven curriculum with real code editors — Blockly, Python in the browser, live HTML/CSS/JS — plus XP and new worlds to unlock. Teachers get their own accounts to run classes, see where students get stuck, and read each student’s real submitted work. Bilingual (English / Русский), with Windows and Mac desktop apps.',
     tags:['Next.js','React','TypeScript','Supabase','Pyodide','Blockly','Electron'], cover:'grid',
-    video: 'video_byteforge.webm', poster: 'byteforge-poster.png', sound: true,
+    video: 'video_byteforge.webm', poster: 'byteforge-poster.png', sound: true, fit: 'contain',
     link: 'https://byteforge05.vercel.app/login',
     downloads: [
       { label: 'Download for Windows', href: 'https://github.com/andyyounes/ByteForge/releases/download/v1.0.0-desktop/ByteForge.Setup.1.0.0.exe' },
@@ -52,7 +52,7 @@ const PROJECTS = [
       { src: 'byteforge-grade9.png',  label: 'Grade 9 · Pseudocode trace table' },
       { src: 'byteforge-alevel.png',  label: 'AS / A Level journey' },
     ],
-    layout: { left:'38%', top:'138%', width:'62%', height:'25%' } },
+    layout: { left:'15%', top:'138%', width:'70%', height:'32%' } },
 ];
 
 /* ── Cover Art SVGs ── */
@@ -559,7 +559,7 @@ const ProjectExpand = ({ project, onClose }) => {
           </svg>
         </button>
 
-        <div className="pe-cover">
+        <div className="pe-cover" style={p.sound ? { height: 'auto', aspectRatio: '16 / 9' } : undefined}>
           <div className="pe-cover-art"><CoverArt kind={p.cover}/></div>
           <div className="pe-cover-grad"/>
           <div className="pe-cover-grain"/>
@@ -662,20 +662,30 @@ const Showcase = ({ onOpen }) => {
   const next = (e) => { e.stopPropagation(); setIdx(i => (i + 1) % videos.length); };
 
   const p = videos[idx];
+  // Slides flagged fit:'contain' (16:9 footage with its own titles) are shown whole over a blurred
+  // backdrop instead of being cropped to the wide strip, and skip the text overlay so nothing collides.
+  const contain = p.fit === 'contain';
 
   return (
     <div className="showcase" onClick={() => onOpen(p)}>
+      {contain && <div className="showcase-bg" style={{ backgroundImage: `url(${p.poster})` }}/>}
       <video ref={videoRef} key={p.video} src={p.video} poster={p.poster}
-        autoPlay muted loop playsInline className="showcase-video"/>
-      <div className="showcase-overlay">
+        autoPlay muted loop playsInline className={'showcase-video' + (contain ? ' contain' : '')}/>
+      <div className={'showcase-overlay' + (contain ? ' lite' : '')}>
         <div className="showcase-bottom">
           <div className="showcase-info">
             <span className="showcase-n">/ {p.n}</span>
-            <h3 className="showcase-title">{p.title}</h3>
-            <span className="showcase-context">{p.context}</span>
-            <div className="showcase-tags">
-              {p.tags.slice(0, 4).map(t => <span key={t}>{t}</span>)}
-            </div>
+            {contain ? (
+              <span className="showcase-sound">Tap for sound ♪</span>
+            ) : (
+              <>
+                <h3 className="showcase-title">{p.title}</h3>
+                <span className="showcase-context">{p.context}</span>
+                <div className="showcase-tags">
+                  {p.tags.slice(0, 4).map(t => <span key={t}>{t}</span>)}
+                </div>
+              </>
+            )}
           </div>
           <div style={{ display:'flex', flexDirection:'column', alignItems:'flex-end', gap:12 }}>
             <div style={{ display:'flex', gap:8 }}>

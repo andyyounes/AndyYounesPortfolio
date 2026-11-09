@@ -136,3 +136,36 @@
   .pe-shots a:hover img { border-color: rgba(255,255,255,0.4); transform: translateY(-2px); }
 }
 @media (max-width: 480px) { .pe-shots a { width: 150px; } }
+
+/* ByteForge — the 9th card sits one row below the original grid, so the space reserved
+   under the canvas must scale with the page width (percent padding = % of container width)
+   instead of the fixed 820px, otherwise the card spills into the Contact section. */
+@media (min-width: 901px) {
+  .projects-stage { padding-bottom: calc(104% + 40px); }
+}
+
+/* ByteForge — show 16:9 footage whole inside the wide showcase strip */
+.showcase-bg {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  filter: blur(28px) brightness(0.5);
+  transform: scale(1.15);
+}
+.showcase-video.contain { object-fit: contain; z-index: 1; }
+.showcase-overlay { z-index: 2; }
+.showcase-overlay.lite { background: none; pointer-events: none; }
+.showcase-overlay.lite button { pointer-events: auto; }
+.showcase-sound {
+  font-family: var(--mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+
+/* Project overlay — when the card is taller than the window, auto margins fall back to
+   top-aligned (scrollable) instead of centring and clipping the top of the video. */
+@media (min-width: 481px) {
+  .pe { align-items: flex-start; }
+  .pe-card { margin: auto; }
+}
