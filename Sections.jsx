@@ -38,7 +38,7 @@ const PROJECTS = [
   { id:'p9', n:'09', title:'ByteForge', context:'ICT Learning Platform · Grade 6 → A Level', year:'2026–', role:'Creator & Developer',
     desc:'An interactive ICT & Computer Science platform I built for school students, from Grade 6 through A Level. Each grade is a story-driven curriculum with real code editors — Blockly, Python in the browser, live HTML/CSS/JS — plus XP and new worlds to unlock. Teachers get their own accounts to run classes, see where students get stuck, and read each student’s real submitted work. Bilingual (English / Русский), with Windows and Mac desktop apps.',
     tags:['Next.js','React','TypeScript','Supabase','Pyodide','Blockly','Electron'], cover:'grid',
-    video: 'video_byteforge.webm', poster: 'byteforge-poster.png', sound: true, fit: 'contain',
+    video: 'video_byteforge.mp4', poster: 'byteforge-poster.png', sound: true, fit: 'contain',
     link: 'https://byteforge05.vercel.app/login',
     downloads: [
       { label: 'Download for Windows', href: 'https://github.com/andyyounes/ByteForge/releases/download/v1.0.0-desktop/ByteForge.Setup.1.0.0.exe' },

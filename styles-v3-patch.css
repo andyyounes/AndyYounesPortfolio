@@ -169,3 +169,11 @@
   .pe { align-items: flex-start; }
   .pe-card { margin: auto; }
 }
+
+/* Phones: the overlay is a bottom sheet. If the card is taller than the screen, flex-end
+   pushed its top (the video) off-screen with no way to scroll to it. Auto top margin keeps
+   the bottom-sheet look when it fits and falls back to top-aligned + scrollable when it doesn't. */
+@media (max-width: 480px) {
+  .pe { align-items: flex-start; }
+  .pe-card { margin-top: auto; }
+}
